@@ -7,7 +7,8 @@ admin.site.register(Category)
 
 @admin.register(Expense)
 class ExpenseAdmin(admin.ModelAdmin):
-    list_display = ('title',
+    list_display = ('id',
+                    'title',
                     'category',
                     'account',
                     'price',
@@ -16,3 +17,4 @@ class ExpenseAdmin(admin.ModelAdmin):
                      'account')
     list_filter = ('category',
                    'price')
+
