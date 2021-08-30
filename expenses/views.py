@@ -13,8 +13,10 @@ from rest_framework import generics, permissions
 
 
 class ExpenseListCreateAPIView(generics.ListCreateAPIView):
+    """
+    This endpoint creates on expense to logged in user or gives a list available expenses
+    """
     serializer_class = ExpenseSerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
     def get_queryset(self):
         return Expense.objects.filter(account=self.request.user.account)
@@ -24,7 +26,7 @@ class ExpenseListCreateAPIView(generics.ListCreateAPIView):
 
 
 class ExpenseRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = ExpenseDetailSerializer
+    serializer_class = ExpenseSerializer
     permission_classes = (permissions.IsAuthenticated, IsOwner)
     queryset = Expense.objects.all()
 
@@ -149,3 +151,7 @@ class ExpenseRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView)
 #
 #     expense.delete()
 #     return Response('Deleted', status=status.HTTP_200_OK)
+
+
+
+

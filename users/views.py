@@ -4,5 +4,8 @@ from .models import Account
 
 
 class AccountRegistrationAPIView(generics.CreateAPIView):
+    """
+    This endpoint registers users based on the fields
+    """
     serializer_class = AccountRegistrationSerializer
 
